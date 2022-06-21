@@ -1,0 +1,4 @@
+<launch>
+   <node pkg="test_pub" type="drive_vel.py" name="drive_pub" output="screen"/>
+   <node pkg="test_pub" type="odom.py" name="odom" output="screen"/>
+</launch>

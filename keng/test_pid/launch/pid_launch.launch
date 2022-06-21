@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node name="pid_l_node" pkg="pid" type="controller" >
+      <param name="Kp" value="1.0" />
+      <param name="Ki" value="0.0" />
+      <param name="Kd" value="0.1" />
+      <param name="upper_limit" value="2.0" />
+      <param name="lower_limit" value="-2.0" />
+      <param name="windup_limit" value="2.0" />
+      <param name="max_loop_frequency" value="20.0" />
+      <param name="min_loop_frequency" value="5.0" />
+      <param name="topic_from_controller" value="/l_control_effort" />
+      <param name="topic_from_plant" value="/enc_vel_l" />
+      <param name="setpoint_topic" value="/control_left_wheel/command" />
+      <!-- <remap from="setpoint" to="/setpoint" /> -->
+  </node>
+
+  <node name="pid_r_node" pkg="pid" type="controller" >
+      <param name="Kp" value="1.0" />
+      <param name="Ki" value="0.0" />
+      <param name="Kd" value="0.1" />
+      <param name="upper_limit" value="2.0" />
+      <param name="lower_limit" value="-2.0" />
+      <param name="windup_limit" value="2.0" />
+      <param name="max_loop_frequency" value="20.0" />
+      <param name="min_loop_frequency" value="5.0" />
+      <param name="topic_from_controller" value="/r_control_effort" />
+      <param name="topic_from_plant" value="/enc_vel_r" />
+      <param name="setpoint_topic" value="/control_right_wheel/command" />
+      <!-- <remap from="setpoint" to="/setpoint" /> -->
+  </node>
+
+  <node name="set_pid_node" pkg="test_pid" type="boat_pid.py" output="screen"/>
+
+  <!-- <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot" args="/l_control_effort/data /l_state/data /l_setpoint/data" /> -->
+  <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot" args="/r_control_effort/data /r_state/data /r_setpoint/data" />
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
+
+
+</launch>
