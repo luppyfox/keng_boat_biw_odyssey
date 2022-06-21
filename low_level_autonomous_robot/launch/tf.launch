@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find low_level_autonomous_robot)/launch/spawn_low_level.launch"/>
+    <include file="$(find low_level_autonomous_robot)/launch/state_publisher.launch"/>
+</launch>

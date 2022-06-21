@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="low_intermediate_navigation" type="kinematic.py" name="convert_vel" output="screen"/>
+</launch>

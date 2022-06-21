@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <!-- USE: roslaunch my_mira_description urdf_visualize.launch model:='$(find myrobot_package)/urdf/myrobot.urdf' -->
+  <arg name="model" default="$(find low_intermediate_navigation)/urdf/test.urdf"/>
+
+  <!-- send fake joint values -->
+  <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="TRUE"/>
+  </node-->
+
+  <!-- Combine joint values -->
+  <node name="state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+     <param name="publish_frequency" type="double" value="100.0" />
+     <param name="robot_description" command="cat $(arg model)" />
+  </node> 
+</launch>

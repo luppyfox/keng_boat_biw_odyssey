@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find low_intermediate_navigation)/launch/spawn_urdf.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.7" />
+        <arg name="urdf_robot_file" value="$(find low_intermediate_navigation)/urdf/test.urdf"/>
+        <!--<arg name="urdf_robot_file" value="$(find low_intermediate_navigation)/urdf/test.urdf"/>-->
+        <arg name="robot_name" value="boat_model" />
+    </include>
+</launch>
+
+    
+
+    
+        
+    
