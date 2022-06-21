@@ -1,0 +1,23 @@
+<launch>
+
+  <node pkg="rosserial_arduino" type="serial_node.py" name="serial_node" output="screen">
+    <param name="port" value="/dev/ttyACM0"/>
+    <param name="baud" value="115200"/>
+  </node>
+
+  <!--node pkg="odysseyblue" type="pyserial.py" name="pyserial_node" output="screen"/-->
+
+  <node pkg="odysseyblue" type="convert_vel.py" name="convert_vel_node" output="screen"/>
+  <node pkg="odysseyblue" type="odom2.py" name="odom_node" output="screen" />
+
+  <node pkg="imu" type="bno08x_ros.py" name="imu_bno08x" output="screen"/>
+
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+    <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+    <param name="serial_baudrate"     type="int"    value="115200"/>   
+    <param name="frame_id"            type="string" value="base_laser"/>
+    <param name="inverted"            type="bool"   value="false"/>
+    <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+</launch>
